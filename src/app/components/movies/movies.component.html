@@ -1,0 +1,13 @@
+<div class="app">
+  <h1>Listado de Peliculas</h1>
+  <div class="search">
+    <input type="text" placeholder="Buscar pelicula" #movieSearchInput>
+  </div>
+  <!-- Se usa el async para hacerlo de manera asincronica -->
+  <div *ngIf="(movies$ | async) as movies; else empty" class="container">
+    <app-card-movie *ngFor="let movie of movies" [movie]="movie"></app-card-movie>
+  </div>
+  <ng-template #empty class="empty">
+    <h3>No se encontraron peliculas</h3>
+  </ng-template>
+</div>
